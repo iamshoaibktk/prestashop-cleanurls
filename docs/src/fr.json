@@ -1,0 +1,92 @@
+{
+  "title": "Clean URLs - Supprimer les ID, redirections 301 et URL SEO",
+  "subtitle": "Guide d'utilisation",
+  "labels": { "version": "Version", "author": "Auteur", "contact": "Contact", "page": "Page", "contents": "Sommaire", "compat": "Compatibilité" },
+  "sections": [
+    { "title": "Présentation", "content": [
+      { "p": "PrestaShop place des numéros d'ID dans chaque URL, comme /12-blue-shirt.html ou /3-clothes. Clean URLs les supprime : vos adresses deviennent /men/blue-shirt.html et /clothes, plus faciles à lire, à partager et à référencer." },
+      { "p": "**Ce que fait le module :**" },
+      { "ul": ["Supprime les ID des URL des produits, catégories, pages CMS, catégories CMS, marques et fournisseurs", "Redirige chaque ancienne URL avec ID vers sa nouvelle adresse avec une 301", "Mémorise les URL renommées pour que les anciens liens continuent de fonctionner", "Permet d'ajouter vos propres redirections 301, 302, 303, 307 et 308 (exacte, commence par, ou expression régulière)", "Enregistre les erreurs 404 pour les rediriger en un clic", "Détecte les URL en double et les corrige automatiquement", "Fournit un sitemap XML en direct dans toutes les langues (hreflang) avec les images des produits"] },
+      { "p": "Il fonctionne sans surcharger aucune classe PrestaShop ni aucun fichier du thème." }
+    ] },
+    { "title": "Prérequis", "content": [
+      { "ul": ["PrestaShop 9.0 ou plus récent", "PHP 8.1 ou plus récent", "URL simplifiées activées dans **Paramètres de la boutique > Trafic et SEO**"] }
+    ] },
+    { "title": "Installation", "content": [
+      { "ol": ["Allez dans **Modules > Gestionnaire de modules** et cliquez sur **Installer un module**.", "Choisissez cleanurls-x.y.z.zip.", "Cliquez sur **Configurer**."] },
+      { "p": "Vos URL changent dès l'installation du module. Chaque ancienne adresse continue de fonctionner : elle envoie désormais visiteurs et moteurs de recherche vers la nouvelle avec une 301." },
+      { "note": "Videz le cache dans Paramètres avancés > Performances après l'installation, pour que les pages en cache affichent les nouveaux liens." }
+    ] },
+    { "title": "Avant et après", "content": [
+      { "table": [
+        ["Page", "Avant → après"],
+        ["Produit", "/1-1-hummingbird-printed-t-shirt.html → /men/hummingbird-printed-t-shirt.html"],
+        ["Catégorie", "/3-clothes → /clothes"],
+        ["Page CMS", "/content/1-delivery → /content/delivery"],
+        ["Catégorie CMS", "/content/category/1-home → /content/category/home"],
+        ["Marque", "/brand/1-studio-design → /brand/studio-design"],
+        ["Fournisseur", "/supplier/1-fashion-supplier → /supplier/fashion-supplier"]
+      ] },
+      { "p": "La page de réglages affiche ces exemples avec vos propres produits, pour vérifier avant la mise en ligne." }
+    ] },
+    { "title": "Modèles d'URL", "content": [
+      { "p": "Chaque type de page a un modèle modifiable dans l'onglet **Réglages des URL**. Chaque modèle doit contenir {rewrite} (l'URL simplifiée de la page) et ne doit pas contenir {id}." },
+      { "table": [
+        ["Mot-clé", "Signification"],
+        ["{rewrite}", "L'URL simplifiée de la page. Obligatoire."],
+        ["{category:/}", "Produits uniquement : la catégorie par défaut, suivie d'une barre oblique."],
+        ["{categories:/}", "Produits et catégories : le chemin complet des catégories parentes, comme clothes/men/."]
+      ] },
+      { "p": "Chaque type de page peut être désactivé séparément. Les types désactivés gardent le format PrestaShop avec ID." }
+    ] },
+    { "title": "Anciennes URL et pages renommées", "content": [
+      { "p": "**Rediriger les anciennes URL avec ID :** toute adresse à l'ancien format, comme /12-blue-shirt.html, est envoyée vers la nouvelle URL avec une 301. Les moteurs de recherche transfèrent votre positionnement vers la nouvelle adresse, et les anciens liens sur d'autres sites continuent de fonctionner. Les paramètres comme ?page=2 sont conservés." },
+      { "p": "**Mémoriser les URL renommées :** quand vous modifiez l'URL simplifiée d'un produit, d'une catégorie, d'une page, d'une marque ou d'un fournisseur, l'ancienne adresse est enregistrée et redirige vers la nouvelle." }
+    ] },
+    { "title": "Déclinaisons de produits", "content": [
+      { "p": "Avec les ID, PrestaShop choisissait une déclinaison grâce au numéro dans l'URL. Clean URLs garde la déclinaison dans la partie après #, comme /men/hummingbird-printed-t-shirt.html#/2-size-m/11-color-black. Un petit script sur la page produit sélectionne cette taille et cette couleur, et PrestaShop charge le bon prix, le bon stock et les bonnes images." },
+      { "note": "Les anciens liens vers une déclinaison, comme /1-2-hummingbird-printed-t-shirt.html, sont redirigés vers la nouvelle URL avec la bonne déclinaison sélectionnée." }
+    ] },
+    { "title": "Gestionnaire de redirections", "content": [
+      { "p": "Dans l'onglet **Redirections**, vous pouvez envoyer n'importe quelle ancienne adresse vers une nouvelle, par exemple après avoir déplacé ou supprimé une page." },
+      { "table": [
+        ["Correspondance", "Exemple"],
+        ["URL exacte", "old-shop/summer-sale → women"],
+        ["Commence par", "promo → https://example.com/landing (capte promo-2025, promo/abc…)"],
+        ["Expression régulière", "^blog/(.*)$ → content/$1"]
+      ] },
+      { "table": [
+        ["Type", "À utiliser pour"],
+        ["301", "Déplacements définitifs. Le meilleur choix pour le SEO."],
+        ["302 / 307", "Déplacements temporaires, comme une page de soldes."],
+        ["303", "Redirection après un formulaire."],
+        ["308", "Déplacement définitif qui conserve la méthode de la requête."]
+      ] },
+      { "p": "Chaque redirection compte ses visites et indique sa dernière utilisation." }
+    ] },
+    { "title": "Suivi des 404", "content": [
+      { "p": "L'onglet **Suivi des 404** liste les adresses qui ont mené à une erreur « page introuvable », avec le nombre de visites et leur provenance. Cliquez sur **Rediriger** pour envoyer cette adresse vers une page valide ; elle disparaît alors de la liste." },
+      { "p": "Par défaut, les pages manquantes affichent votre page 404, ce qui est la bonne réponse pour les moteurs de recherche. Vous pouvez choisir d'envoyer les visiteurs vers l'accueil, mais cela peut masquer de vrais problèmes." }
+    ] },
+    { "title": "URL en double", "content": [
+      { "p": "Sans ID, deux pages avec la même URL simplifiée partageraient une adresse. L'onglet **URL en double** les liste, ainsi que les catégories dont l'URL est identique à une page de la boutique comme contact-us." },
+      { "p": "Cliquez sur **Corriger automatiquement** pour renommer les pages en trop en nom-2, nom-3, etc. La première page garde son URL, et les anciennes adresses redirigent." }
+    ] },
+    { "title": "Sitemap XML", "content": [
+      { "p": "Votre sitemap est toujours à jour à l'adresse https://votre-boutique.com/sitemap.xml. Il liste produits, catégories, pages CMS, marques et fournisseurs, avec chaque traduction (hreflang) et les images des produits. Aucune tâche cron n'est nécessaire." },
+      { "ol": ["Ouvrez l'onglet **Sitemap** et copiez l'URL du sitemap.", "Soumettez-la dans Google Search Console et Bing Webmaster Tools.", "Cliquez sur **Ajouter à robots.txt** pour que les autres moteurs le trouvent aussi."] }
+    ] },
+    { "title": "Bon à savoir", "content": [
+      { "ul": ["Aucune classe PrestaShop ni aucun fichier du thème n'est surchargé. Le module utilise les hooks de routage de PrestaShop.", "Les pages fournisseurs ne s'ouvrent que si elles sont activées dans Paramètres de la boutique > Paramètres des produits.", "Si vous désinstallez le module, vos URL reviennent au format avec ID. Les liens vers les adresses simplifiées ne fonctionneront plus : gardez le module installé une fois en service.", "Chaque boutique d'un multiboutique garde ses propres redirections, journal des 404 et sitemap."] }
+    ] },
+    { "title": "Dépannage", "content": [
+      { "p": "**Les liens affichent encore des ID.** Videz le cache dans Paramètres avancés > Performances et vérifiez que les URL simplifiées sont activées." },
+      { "p": "**Une page affiche « page introuvable ».** Consultez l'onglet URL en double : l'URL est peut-être utilisée deux fois, ou par une page de la boutique." },
+      { "p": "**La mauvaise déclinaison est sélectionnée.** Vérifiez que votre thème charge les scripts produit standard de PrestaShop ; le module sélectionne la déclinaison une fois la page chargée." }
+    ] },
+    { "title": "Assistance", "content": [
+      { "p": "Ce module est gratuit et open source sous licence Academic Free License 3.0. Pour toute question, tout signalement de bug ou développement sur mesure :" },
+      { "ul": ["E-mail : iamshoaibktk@gmail.com", "WhatsApp : +923459016286"] }
+    ] }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "title": "Clean URLs - ID's verwijderen, 301-redirects en SEO-URL's",
+  "subtitle": "Gebruikershandleiding",
+  "labels": { "version": "Versie", "author": "Auteur", "contact": "Contact", "page": "Pagina", "contents": "Inhoud", "compat": "Compatibiliteit" },
+  "sections": [
+    { "title": "Overzicht", "content": [
+      { "p": "PrestaShop zet ID-nummers in elke URL, zoals /12-blue-shirt.html of /3-clothes. Clean URLs haalt ze weg, zodat uw adressen /men/blue-shirt.html en /clothes worden: makkelijker te lezen, te delen en beter vindbaar." },
+      { "p": "**Wat de module doet:**" },
+      { "ul": ["Verwijdert ID's uit de URL's van producten, categorieën, CMS-pagina's, CMS-categorieën, merken en leveranciers", "Stuurt elke oude URL met ID met een 301 door naar het nieuwe adres", "Onthoudt hernoemde URL's, zodat oude links blijven werken", "Eigen 301-, 302-, 303-, 307- en 308-redirects toevoegen (exact, begint met of reguliere expressie)", "Logt 404-fouten zodat u ze met één klik kunt doorsturen", "Vindt dubbele URL's en lost ze automatisch op", "Biedt een live XML-sitemap met alle talen (hreflang) en productafbeeldingen"] },
+      { "p": "Het werkt zonder PrestaShop-klassen of themabestanden te overschrijven." }
+    ] },
+    { "title": "Vereisten", "content": [
+      { "ul": ["PrestaShop 9.0 of nieuwer", "PHP 8.1 of nieuwer", "Vriendelijke URL's ingeschakeld in **Winkelparameters > Verkeer en SEO**"] }
+    ] },
+    { "title": "Installatie", "content": [
+      { "ol": ["Ga naar **Modules > Modulebeheer** en klik op **Een module uploaden**.", "Kies cleanurls-x.y.z.zip.", "Klik op **Configureren**."] },
+      { "p": "Uw URL's veranderen zodra de module is geïnstalleerd. Elk oud adres blijft werken: het stuurt bezoekers en zoekmachines nu met een 301 naar het nieuwe." },
+      { "note": "Leeg na de installatie de cache via Geavanceerde instellingen > Prestaties, zodat gecachte pagina's de nieuwe links tonen." }
+    ] },
+    { "title": "Voor en na", "content": [
+      { "table": [
+        ["Pagina", "Voor → na"],
+        ["Product", "/1-1-hummingbird-printed-t-shirt.html → /men/hummingbird-printed-t-shirt.html"],
+        ["Categorie", "/3-clothes → /clothes"],
+        ["CMS-pagina", "/content/1-delivery → /content/delivery"],
+        ["CMS-categorie", "/content/category/1-home → /content/category/home"],
+        ["Merk", "/brand/1-studio-design → /brand/studio-design"],
+        ["Leverancier", "/supplier/1-fashion-supplier → /supplier/fashion-supplier"]
+      ] },
+      { "p": "De instellingenpagina toont deze voorbeelden met uw eigen producten, zodat u ze kunt controleren voordat u live gaat." }
+    ] },
+    { "title": "URL-patronen", "content": [
+      { "p": "Elk paginatype heeft een patroon dat u kunt wijzigen op het tabblad **URL-instellingen**. Elk patroon moet {rewrite} bevatten (de vriendelijke URL van de pagina) en mag geen {id} bevatten." },
+      { "table": [
+        ["Trefwoord", "Betekenis"],
+        ["{rewrite}", "De vriendelijke URL van de pagina. Verplicht."],
+        ["{category:/}", "Alleen producten: de standaardcategorie, gevolgd door een schuine streep."],
+        ["{categories:/}", "Producten en categorieën: het volledige pad van bovenliggende categorieën, zoals clothes/men/."]
+      ] },
+      { "p": "Elk paginatype kan apart worden uitgeschakeld. Uitgeschakelde types houden het PrestaShop-formaat met ID's." }
+    ] },
+    { "title": "Oude URL's en hernoemde pagina's", "content": [
+      { "p": "**Oude URL's met ID's doorsturen:** elk adres in het oude formaat, zoals /12-blue-shirt.html, gaat met een 301 naar de nieuwe URL. Zoekmachines verplaatsen uw posities naar het nieuwe adres en oude links op andere sites blijven werken. Parameters zoals ?page=2 blijven behouden." },
+      { "p": "**Hernoemde URL's onthouden:** als u de vriendelijke URL van een product, categorie, pagina, merk of leverancier wijzigt, wordt het oude adres bewaard en stuurt het door naar het nieuwe." }
+    ] },
+    { "title": "Productcombinaties", "content": [
+      { "p": "Met ID's koos PrestaShop een combinatie aan de hand van het nummer in de URL. Clean URLs bewaart de combinatie in het deel na #, zoals /men/hummingbird-printed-t-shirt.html#/2-size-m/11-color-black. Een klein script op de productpagina kiest die maat en kleur, en PrestaShop laadt de juiste prijs, voorraad en afbeeldingen." },
+      { "note": "Oude links naar een combinatie, zoals /1-2-hummingbird-printed-t-shirt.html, gaan naar de nieuwe URL met de juiste combinatie geselecteerd." }
+    ] },
+    { "title": "Redirectbeheer", "content": [
+      { "p": "Op het tabblad **Redirects** kunt u elk oud adres naar een nieuw sturen, bijvoorbeeld na het verplaatsen of verwijderen van een pagina." },
+      { "table": [
+        ["Overeenkomst", "Voorbeeld"],
+        ["Exacte URL", "old-shop/summer-sale → women"],
+        ["Begint met", "promo → https://example.com/landing (vangt promo-2025, promo/abc…)"],
+        ["Reguliere expressie", "^blog/(.*)$ → content/$1"]
+      ] },
+      { "table": [
+        ["Type", "Gebruik"],
+        ["301", "Permanente verhuizingen. Het beste voor SEO."],
+        ["302 / 307", "Tijdelijke verhuizingen, zoals een uitverkooppagina."],
+        ["303", "Doorsturen na een formulier."],
+        ["308", "Permanente verhuizing die de aanvraagmethode behoudt."]
+      ] },
+      { "p": "Elke redirect telt zijn hits en toont wanneer hij het laatst is gebruikt." }
+    ] },
+    { "title": "404-monitor", "content": [
+      { "p": "Het tabblad **404-monitor** toont adressen die tot een fout „pagina niet gevonden” leidden, met het aantal hits en de herkomst. Klik op **Doorsturen** om dat adres naar een werkende pagina te sturen; daarna verdwijnt het uit de lijst." },
+      { "p": "Standaard tonen ontbrekende pagina's uw 404-pagina, het juiste antwoord voor zoekmachines. U kunt bezoekers naar de homepage sturen, maar dat kan echte problemen verbergen." }
+    ] },
+    { "title": "Dubbele URL's", "content": [
+      { "p": "Zonder ID's zouden twee pagina's met dezelfde vriendelijke URL één adres delen. Het tabblad **Dubbele URL's** toont ze, net als categorieën waarvan de URL gelijk is aan een winkelpagina zoals contact-us." },
+      { "p": "Klik op **Automatisch oplossen** om de extra pagina's te hernoemen naar naam-2, naam-3 enzovoort. De eerste pagina houdt haar URL en de oude adressen sturen door." }
+    ] },
+    { "title": "XML-sitemap", "content": [
+      { "p": "Uw sitemap is altijd actueel op https://uw-winkel.nl/sitemap.xml. Hij bevat producten, categorieën, CMS-pagina's, merken en leveranciers, met elke vertaling (hreflang) en de productafbeeldingen. Geen cronjob nodig." },
+      { "ol": ["Open het tabblad **Sitemap** en kopieer de sitemap-URL.", "Dien hem in bij Google Search Console en Bing Webmaster Tools.", "Klik op **Toevoegen aan robots.txt** zodat andere zoekmachines hem ook vinden."] }
+    ] },
+    { "title": "Goed om te weten", "content": [
+      { "ul": ["Er worden geen PrestaShop-klassen of themabestanden overschreven. De module gebruikt de routinghooks van PrestaShop.", "Leverancierspagina's openen alleen als ze zijn ingeschakeld in Winkelparameters > Productinstellingen.", "Als u de module verwijdert, gaan uw URL's terug naar het formaat met ID's. Links naar de schone adressen werken dan niet meer, dus laat de module geïnstalleerd zodra u hem gebruikt.", "Elke winkel van een multistore heeft eigen redirects, een eigen 404-logboek en sitemap."] }
+    ] },
+    { "title": "Problemen oplossen", "content": [
+      { "p": "**Links tonen nog ID's.** Leeg de cache via Geavanceerde instellingen > Prestaties en controleer of vriendelijke URL's aanstaan." },
+      { "p": "**Een pagina toont „pagina niet gevonden”.** Bekijk het tabblad Dubbele URL's: de URL wordt mogelijk twee keer of door een winkelpagina gebruikt." },
+      { "p": "**De verkeerde combinatie wordt gekozen.** Controleer of uw thema de standaard productscripts van PrestaShop laadt; de module kiest de combinatie zodra de pagina is geladen." }
+    ] },
+    { "title": "Ondersteuning", "content": [
+      { "p": "Deze module is gratis en open source onder de Academic Free License 3.0. Voor vragen, foutmeldingen of maatwerk:" },
+      { "ul": ["E-mail: iamshoaibktk@gmail.com", "WhatsApp: +923459016286"] }
+    ] }
+  ]
+}

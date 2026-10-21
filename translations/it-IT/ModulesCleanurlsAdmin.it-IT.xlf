@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="cleanurls" source-language="en-US" target-language="it-IT" datatype="plaintext">
+    <body>
+      <trans-unit id="b75d188a48f608328ae22e09ca49fabf">
+        <source>Clean URLs - Remove IDs, 301 Redirects &amp; SEO URLs</source>
+        <target>Clean URLs - Rimuovi gli ID, redirect 301 e URL SEO</target>
+      </trans-unit>
+      <trans-unit id="9a2606a883e8b232f85bbf86051e3797">
+        <source>Remove IDs and numbers from product, category, CMS, brand and supplier URLs, with automatic 301 redirects, a redirect manager, a 404 monitor and an XML sitemap.</source>
+        <target>Rimuovi ID e numeri dagli URL di prodotti, categorie, pagine CMS, marchi e fornitori, con redirect 301 automatici, gestione dei redirect, monitoraggio 404 e sitemap XML.</target>
+      </trans-unit>
+      <trans-unit id="9ec6b11169bf8b31d1826c449f15af27">
+        <source>Your URLs will go back to the PrestaShop format with IDs. Uninstall?</source>
+        <target>I tuoi URL torneranno al formato PrestaShop con ID. Disinstallare?</target>
+      </trans-unit>
+      <trans-unit id="f38f5974cdc23279ffe6d203641a8bdf">
+        <source>Settings updated.</source>
+        <target>Impostazioni aggiornate.</target>
+      </trans-unit>
+      <trans-unit id="9810f151f70b4675882ed2d9f8ad110c">
+        <source>Please fill in both the old URL and the new URL.</source>
+        <target>Inserisci sia il vecchio sia il nuovo URL.</target>
+      </trans-unit>
+      <trans-unit id="74d604dfba20c43e0ebec3f9786e3fc6">
+        <source>This regular expression is not valid.</source>
+        <target>Questa espressione regolare non è valida.</target>
+      </trans-unit>
+      <trans-unit id="1744b72758ad8676fa939ea58ecad7ae">
+        <source>Redirect added.</source>
+        <target>Redirect aggiunto.</target>
+      </trans-unit>
+      <trans-unit id="17b81b23d708956077a5ac3dd5139a99">
+        <source>Redirect deleted.</source>
+        <target>Redirect eliminato.</target>
+      </trans-unit>
+      <trans-unit id="09b4f82676d17e102ce130d8a67d6b03">
+        <source>The 404 log has been cleared.</source>
+        <target>Il registro dei 404 è stato svuotato.</target>
+      </trans-unit>
+      <trans-unit id="4ea637407a8603edb9e006b56d60093c">
+        <source>%count% URLs were renamed. Their old addresses now redirect.</source>
+        <target>%count% URL sono stati rinominati. I vecchi indirizzi ora reindirizzano.</target>
+      </trans-unit>
+      <trans-unit id="2bd96f40530c8ab48d5b2620e3e325b1">
+        <source>The sitemap line was added to robots.txt.</source>
+        <target>La riga della sitemap è stata aggiunta a robots.txt.</target>
+      </trans-unit>
+      <trans-unit id="25e4fd1789b9b9ba63e0301a99ea4503">
+        <source>robots.txt could not be written. Add the line by hand.</source>
+        <target>Impossibile scrivere robots.txt. Aggiungi la riga a mano.</target>
+      </trans-unit>
+      <trans-unit id="707210e3112a94ecb1b1165b712dcc24">
+        <source>Friendly URLs are turned off. Turn them on in Shop Parameters &gt; Traffic &amp; SEO, or this module has no effect.</source>
+        <target>Gli URL semplificati sono disattivati. Attivali in Parametri negozio &gt; Traffico e SEO, altrimenti questo modulo non ha effetto.</target>
+      </trans-unit>
+      <trans-unit id="e5d286d5224d5ab7f56f7bf110aa3ab6">
+        <source>The URL pattern must contain {rewrite}.</source>
+        <target>Lo schema dell'URL deve contenere {rewrite}.</target>
+      </trans-unit>
+      <trans-unit id="664ead063803ebbb611a8d7560e29100">
+        <source>The URL pattern must not contain {id}: removing it is the point of this module.</source>
+        <target>Lo schema dell'URL non deve contenere {id}: rimuoverlo è lo scopo di questo modulo.</target>
+      </trans-unit>
+      <trans-unit id="8389a67d9aa3da5657a80023cb401d3b">
+        <source>The URL pattern uses a keyword that is not available for this page type.</source>
+        <target>Lo schema dell'URL usa una parola chiave non disponibile per questo tipo di pagina.</target>
+      </trans-unit>
+      <trans-unit id="f854119246b18853d8f297fef00367fe">
+        <source>The URL pattern may only contain letters, numbers, slashes, dots, dashes and keywords, and must not start with a slash.</source>
+        <target>Lo schema dell'URL può contenere solo lettere, numeri, barre, punti, trattini e parole chiave, e non deve iniziare con una barra.</target>
+      </trans-unit>
+      <trans-unit id="068f80c7519d0528fb08e82137a72131">
+        <source>Products</source>
+        <target>Prodotti</target>
+      </trans-unit>
+      <trans-unit id="af1b98adf7f686b84cd0b443e022b7a0">
+        <source>Categories</source>
+        <target>Categorie</target>
+      </trans-unit>
+      <trans-unit id="ccb48f393023eee753f69208f038e0f3">
+        <source>CMS pages</source>
+        <target>Pagine CMS</target>
+      </trans-unit>
+      <trans-unit id="dc9e4757dbdc777be79d09fa30f6ee28">
+        <source>CMS categories</source>
+        <target>Categorie CMS</target>
+      </trans-unit>
+      <trans-unit id="84be54bb4bd1b755a27d86388700d097">
+        <source>Brands</source>
+        <target>Marchi</target>
+      </trans-unit>
+      <trans-unit id="1814d65a76028fdfbadab64a5a8076df">
+        <source>Suppliers</source>
+        <target>Fornitori</target>
+      </trans-unit>
+      <trans-unit id="93cba07454f06a4a960172bbd6e2a435">
+        <source>Yes</source>
+        <target>Sì</target>
+      </trans-unit>
+      <trans-unit id="bafd7322c6e97d25b6299b5d6fe8920b">
+        <source>No</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="f2b75d9ce43c3b6ad3a64055351699f0">
+        <source>Keywords: {rewrite} (required), {category:/} and {categories:/}. Default: {category:/}{rewrite}.html</source>
+        <target>Parole chiave: {rewrite} (obbligatoria), {category:/} e {categories:/}. Predefinito: {category:/}{rewrite}.html</target>
+      </trans-unit>
+      <trans-unit id="f0a89e94a8bd558218090c310f852534">
+        <source>Keywords: {rewrite} (required) and {categories:/} for the parent path. Default: {rewrite}</source>
+        <target>Parole chiave: {rewrite} (obbligatoria) e {categories:/} per il percorso padre. Predefinito: {rewrite}</target>
+      </trans-unit>
+      <trans-unit id="96782c09124ed64384877631d43685a8">
+        <source>Keyword: {rewrite}. Default: content/{rewrite}</source>
+        <target>Parola chiave: {rewrite}. Predefinito: content/{rewrite}</target>
+      </trans-unit>
+      <trans-unit id="1c27845e33da4be7c68e8720480ed971">
+        <source>Keyword: {rewrite}. Default: content/category/{rewrite}</source>
+        <target>Parola chiave: {rewrite}. Predefinito: content/category/{rewrite}</target>
+      </trans-unit>
+      <trans-unit id="74e60e439dd007cba055446e20e5a1ce">
+        <source>Keyword: {rewrite}. Default: brand/{rewrite}</source>
+        <target>Parola chiave: {rewrite}. Predefinito: brand/{rewrite}</target>
+      </trans-unit>
+      <trans-unit id="6f457dd45d1f63ee02d530ba3b3cfb71">
+        <source>Keyword: {rewrite}. Default: supplier/{rewrite}</source>
+        <target>Parola chiave: {rewrite}. Predefinito: supplier/{rewrite}</target>
+      </trans-unit>
+      <trans-unit id="f0210f29ae3b2d85c63b31ad20511034">
+        <source>URL pattern</source>
+        <target>Schema URL</target>
+      </trans-unit>
+      <trans-unit id="8f7fcbffd63b5a48d938589c9ea46be8">
+        <source>URL patterns</source>
+        <target>Schemi URL</target>
+      </trans-unit>
+      <trans-unit id="c9cc8cce247e49bae79f15173ce97354">
+        <source>Save</source>
+        <target>Salva</target>
+      </trans-unit>
+      <trans-unit id="7fabbec8bf8f7900a2b762a6a509d20b">
+        <source>Redirects and monitoring</source>
+        <target>Redirect e monitoraggio</target>
+      </trans-unit>
+      <trans-unit id="240538f2609e530784f5b8fd5240c84b">
+        <source>Redirect old URLs with IDs</source>
+        <target>Reindirizza i vecchi URL con ID</target>
+      </trans-unit>
+      <trans-unit id="2cfa1984e40d85005d5cf5bd7b5d3f4b">
+        <source>Old addresses like /12-blue-shirt.html send visitors and search engines to the new URL with a 301.</source>
+        <target>I vecchi indirizzi come /12-blue-shirt.html portano visitatori e motori di ricerca al nuovo URL con un 301.</target>
+      </trans-unit>
+      <trans-unit id="c4d2dff6219912ab5e8aff4fff8b1912">
+        <source>Remember renamed URLs</source>
+        <target>Ricorda gli URL rinominati</target>
+      </trans-unit>
+      <trans-unit id="d6eedef8d27c7e8ce686a638ed1e1cfa">
+        <source>When you change a friendly URL, the old one keeps working with a 301.</source>
+        <target>Quando modifichi un URL semplificato, quello vecchio continua a funzionare con un 301.</target>
+      </trans-unit>
+      <trans-unit id="8a9bf620bcaef16b291e72eab1771a4a">
+        <source>Log 404 errors</source>
+        <target>Registra gli errori 404</target>
+      </trans-unit>
+      <trans-unit id="928031b36db1565eafc5f8cf00dec034">
+        <source>Lists missing pages so you can redirect them in one click.</source>
+        <target>Elenca le pagine mancanti per reindirizzarle con un clic.</target>
+      </trans-unit>
+      <trans-unit id="e243418d14e7e86eda4065328ff20ec8">
+        <source>When a page is not found</source>
+        <target>Quando una pagina non viene trovata</target>
+      </trans-unit>
+      <trans-unit id="0adf9dd45418bd4148ab873f6abe30f1">
+        <source>Showing the 404 page is best for SEO. Sending everything to the home page can hide real problems.</source>
+        <target>Mostrare la pagina 404 è la scelta migliore per la SEO. Mandare tutto alla home può nascondere problemi reali.</target>
+      </trans-unit>
+      <trans-unit id="7434de61bee2a216748cd6923ba4891f">
+        <source>Show the 404 page (recommended)</source>
+        <target>Mostra la pagina 404 (consigliato)</target>
+      </trans-unit>
+      <trans-unit id="cfab1304e314abc9f37269a1cf92e1c6">
+        <source>Send visitors to the home page</source>
+        <target>Manda i visitatori alla home</target>
+      </trans-unit>
+      <trans-unit id="46b36091bb7c99b8885615d74bf86225">
+        <source>XML sitemap</source>
+        <target>Sitemap XML</target>
+      </trans-unit>
+      <trans-unit id="2faf046db6452c5db23b1ea73532c0d4">
+        <source>Enable sitemap.xml</source>
+        <target>Attiva sitemap.xml</target>
+      </trans-unit>
+      <trans-unit id="d8573e62e0a946160dc7e001c161810a">
+        <source>A live sitemap with all languages, always up to date. No cron job needed.</source>
+        <target>Una sitemap dal vivo con tutte le lingue, sempre aggiornata. Nessun cron job necessario.</target>
+      </trans-unit>
+      <trans-unit id="db5587320b38b22c7cbc2eab79beb7c5">
+        <source>Include product images</source>
+        <target>Includi le immagini dei prodotti</target>
+      </trans-unit>
+      <trans-unit id="86d2ec7f48142613530def67e5540864">
+        <source>URL settings</source>
+        <target>Impostazioni URL</target>
+      </trans-unit>
+      <trans-unit id="08635c4f0bf6edbca5d2a8bd0da24a6c">
+        <source>Redirects</source>
+        <target>Redirect</target>
+      </trans-unit>
+      <trans-unit id="dfe6ad30864a2a2adf4737c2e8f80a9e">
+        <source>404 monitor</source>
+        <target>Monitor 404</target>
+      </trans-unit>
+      <trans-unit id="0a4afb3a06d930798cfe6f0d8bdab40b">
+        <source>Duplicate URLs</source>
+        <target>URL duplicati</target>
+      </trans-unit>
+      <trans-unit id="5813ce0ec7196c492c97596718f71969">
+        <source>Sitemap</source>
+        <target>Sitemap</target>
+      </trans-unit>
+      <trans-unit id="39efb51d2d08cfcbf237d5ada7c5f517">
+        <source>Before and after</source>
+        <target>Prima e dopo</target>
+      </trans-unit>
+      <trans-unit id="39fa20b152644f1cdade2cbfbbdc114e">
+        <source>Page type</source>
+        <target>Tipo di pagina</target>
+      </trans-unit>
+      <trans-unit id="8ac077de9fc51bdd104ebfd42547d27b">
+        <source>Old URL (redirects with a 301)</source>
+        <target>Vecchio URL (reindirizza con un 301)</target>
+      </trans-unit>
+      <trans-unit id="79191cea6b9ff569b91282686209e190">
+        <source>New URL</source>
+        <target>Nuovo URL</target>
+      </trans-unit>
+      <trans-unit id="ba6a438f79bb4d17a31529c5c3ff3405">
+        <source>Turned off</source>
+        <target>Disattivato</target>
+      </trans-unit>
+      <trans-unit id="8fccb98c9a0dadae9f681ef181dd016a">
+        <source>%count% renamed URLs are remembered and redirect to their new address.</source>
+        <target>%count% URL rinominati sono memorizzati e reindirizzano al nuovo indirizzo.</target>
+      </trans-unit>
+      <trans-unit id="e027cf74bd3febbf31c395b2adf48561">
+        <source>Add a redirect</source>
+        <target>Aggiungi un redirect</target>
+      </trans-unit>
+      <trans-unit id="6c9ab3bc2a9d5dd420201dd3093721fc">
+        <source>Old URL</source>
+        <target>Vecchio URL</target>
+      </trans-unit>
+      <trans-unit id="e81c4e4f2b7b93b481e13a8553c2ae1b">
+        <source>or</source>
+        <target>oppure</target>
+      </trans-unit>
+      <trans-unit id="6da89265a9a8b0b28eb4946bb2ec0c6d">
+        <source>Match</source>
+        <target>Corrispondenza</target>
+      </trans-unit>
+      <trans-unit id="0201b976c7202d59acd1d890857ee327">
+        <source>Exact URL</source>
+        <target>URL esatto</target>
+      </trans-unit>
+      <trans-unit id="13a4a02c365a44407beebb73dddbc554">
+        <source>Starts with</source>
+        <target>Inizia con</target>
+      </trans-unit>
+      <trans-unit id="5412ae5b988e3588451713c3d97d6010">
+        <source>Regular expression ($1 in the new URL)</source>
+        <target>Espressione regolare ($1 nel nuovo URL)</target>
+      </trans-unit>
+      <trans-unit id="a1fa27779242b4902f7ae3bdd5c6d508">
+        <source>Type</source>
+        <target>Tipo</target>
+      </trans-unit>
+      <trans-unit id="b0b701fff3d01c5b515f9293cb4ede4d">
+        <source>permanent</source>
+        <target>permanente</target>
+      </trans-unit>
+      <trans-unit id="d5197d93c063a2b1e22d1630a39b7aef">
+        <source>temporary</source>
+        <target>temporaneo</target>
+      </trans-unit>
+      <trans-unit id="be52536ce2456f133c611e523f95701c">
+        <source>Add redirect</source>
+        <target>Aggiungi redirect</target>
+      </trans-unit>
+      <trans-unit id="b69df945ae986e6b1882cdc87ad19617">
+        <source>Hits</source>
+        <target>Visite</target>
+      </trans-unit>
+      <trans-unit id="685e4ab07c01ede75ed19808ce5505a2">
+        <source>Last hit</source>
+        <target>Ultima visita</target>
+      </trans-unit>
+      <trans-unit id="a268011000c3ef9518b35db40c98dd46">
+        <source>Delete this redirect?</source>
+        <target>Eliminare questo redirect?</target>
+      </trans-unit>
+      <trans-unit id="df4f86052d70bfb5bc1b305ccc595cb8">
+        <source>No redirects yet. Old URLs with IDs are already redirected automatically; add your own here for moved or deleted pages.</source>
+        <target>Nessun redirect per ora. I vecchi URL con ID sono già reindirizzati automaticamente; aggiungi qui i tuoi per pagine spostate o eliminate.</target>
+      </trans-unit>
+      <trans-unit id="7721383fe72f680fb088d4aa4a17c1ad">
+        <source>Pages not found (404)</source>
+        <target>Pagine non trovate (404)</target>
+      </trans-unit>
+      <trans-unit id="a91029664cccaa147320cc211a8e6019">
+        <source>Clear the whole 404 log?</source>
+        <target>Svuotare l'intero registro dei 404?</target>
+      </trans-unit>
+      <trans-unit id="6bee5661e926f636f142c7f60a227116">
+        <source>Clear log</source>
+        <target>Svuota registro</target>
+      </trans-unit>
+      <trans-unit id="e6b391a8d2c4d45902a23a8b6585703d">
+        <source>URL</source>
+        <target>URL</target>
+      </trans-unit>
+      <trans-unit id="55d95901560108d4e26d394794dd5e14">
+        <source>Last seen</source>
+        <target>Ultima volta</target>
+      </trans-unit>
+      <trans-unit id="b8a2a3c1a15753f5449447b7e1d370ed">
+        <source>Came from</source>
+        <target>Provenienza</target>
+      </trans-unit>
+      <trans-unit id="4202ef115ebede37eb22297113f5fb32">
+        <source>Redirect</source>
+        <target>Reindirizza</target>
+      </trans-unit>
+      <trans-unit id="b07dd23268b8ca84dd1a9cfa1f7f2f97">
+        <source>No 404 errors logged yet.</source>
+        <target>Nessun errore 404 registrato per ora.</target>
+      </trans-unit>
+      <trans-unit id="0a81f48af8727f777648d70f9c5dd55d">
+        <source>Without IDs, two pages with the same friendly URL would share one address. The first one keeps it; the others need a different one.</source>
+        <target>Senza ID, due pagine con lo stesso URL semplificato condividerebbero un indirizzo. La prima lo mantiene; le altre ne hanno bisogno di uno diverso.</target>
+      </trans-unit>
+      <trans-unit id="4994a8ffeba4ac3140beb89e8d41f174">
+        <source>Language</source>
+        <target>Lingua</target>
+      </trans-unit>
+      <trans-unit id="1dec4f55522b828fe5dacf8478021a9e">
+        <source>Friendly URL</source>
+        <target>URL semplificato</target>
+      </trans-unit>
+      <trans-unit id="453aceb005ceaf54a47da15fee8b2a26">
+        <source>Pages</source>
+        <target>Pagine</target>
+      </trans-unit>
+      <trans-unit id="df0f20d62dc4ba9c471fdeef6751ec5f">
+        <source>Problem</source>
+        <target>Problema</target>
+      </trans-unit>
+      <trans-unit id="38e075ed4f28dee53b8bb149cd31dbca">
+        <source>Same URL as a store page</source>
+        <target>Stesso URL di una pagina del negozio</target>
+      </trans-unit>
+      <trans-unit id="fcdc2567cd9350b7d8d83fd39d76fbb9">
+        <source>Same URL</source>
+        <target>Stesso URL</target>
+      </trans-unit>
+      <trans-unit id="f33f2371558f4e1a7479a599d9a69f49">
+        <source>Rename the duplicates to slug-2, slug-3…? Their old URLs will redirect.</source>
+        <target>Rinominare i duplicati in slug-2, slug-3…? I vecchi URL reindirizzeranno.</target>
+      </trans-unit>
+      <trans-unit id="fbcbaa3a28512c68da71c03632cc5dac">
+        <source>Fix automatically</source>
+        <target>Correggi automaticamente</target>
+      </trans-unit>
+      <trans-unit id="f77204f6cb2b3a3304d0f81d2ee6a485">
+        <source>No duplicate URLs. Every page has its own address.</source>
+        <target>Nessun URL duplicato. Ogni pagina ha il suo indirizzo.</target>
+      </trans-unit>
+      <trans-unit id="42745a3cd681d60a6710075db3164e41">
+        <source>Your sitemap is live and always up to date:</source>
+        <target>La tua sitemap è online e sempre aggiornata:</target>
+      </trans-unit>
+      <trans-unit id="cb1441e3d1ececd2f62d72f353f6b84e">
+        <source>%count% pages are listed, each with its translations (hreflang).</source>
+        <target>Sono elencate %count% pagine, ognuna con le sue traduzioni (hreflang).</target>
+      </trans-unit>
+      <trans-unit id="cce78dc6ebbec7385a01f2146d6d01c8">
+        <source>Next steps</source>
+        <target>Prossimi passi</target>
+      </trans-unit>
+      <trans-unit id="b632838ba98d2cd22918f067e7e3d452">
+        <source>Submit the sitemap URL in Google Search Console and Bing Webmaster Tools.</source>
+        <target>Invia l'URL della sitemap in Google Search Console e Bing Webmaster Tools.</target>
+      </trans-unit>
+      <trans-unit id="d0fd3854e52444c08caa8ba1626a689e">
+        <source>robots.txt already points to the sitemap.</source>
+        <target>robots.txt punta già alla sitemap.</target>
+      </trans-unit>
+      <trans-unit id="4f4d711e078e5b7192f33b17c17b2454">
+        <source>Tell search engines where it is in robots.txt:</source>
+        <target>Indica ai motori di ricerca dove si trova in robots.txt:</target>
+      </trans-unit>
+      <trans-unit id="f124de176b2af10b7bda195cfef80a90">
+        <source>Add to robots.txt</source>
+        <target>Aggiungi a robots.txt</target>
+      </trans-unit>
+      <trans-unit id="845aed5e2e3f63a7f5182015954bb564">
+        <source>The sitemap is turned off. Turn it on in the URL settings tab.</source>
+        <target>La sitemap è disattivata. Attivala nella scheda Impostazioni URL.</target>
+      </trans-unit>
+      <trans-unit id="2cd6199ee67f0eadee9d5dd14fc30f75">
+        <source>User guide (PDF)</source>
+        <target>Guida utente (PDF)</target>
+      </trans-unit>
+      <trans-unit id="ee74f155e1a70c51305daf078b5251d8">
+        <source>Other languages:</source>
+        <target>Altre lingue:</target>
+      </trans-unit>
+      <trans-unit id="0b9cba5e32be92459abae9324535e757">
+        <source>Top Rated on Fiverr</source>
+        <target>Top Rated su Fiverr</target>
+      </trans-unit>
+      <trans-unit id="76344130f12a1a5b20c45500ea5bb523">
+        <source>PrestaShop developer</source>
+        <target>Sviluppatore PrestaShop</target>
+      </trans-unit>
+      <trans-unit id="7df57fc7789ecb855336f929a3fc35af">
+        <source>Need help with this module, or a custom feature for your store? I reply quickly.</source>
+        <target>Ti serve aiuto con questo modulo o una funzione su misura per il tuo negozio? Rispondo in fretta.</target>
+      </trans-unit>
+      <trans-unit id="808c092a179c6a13566d93bdd950acdf">
+        <source>Hire me on Fiverr</source>
+        <target>Assumimi su Fiverr</target>
+      </trans-unit>
+      <trans-unit id="8b777ebcc5034ce0fe96dd154bcb370e">
+        <source>WhatsApp</source>
+        <target>WhatsApp</target>
+      </trans-unit>
+      <trans-unit id="ce8ae9da5b7cd6c3df2929543a9af92d">
+        <source>Email</source>
+        <target>E-mail</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

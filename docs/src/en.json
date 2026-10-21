@@ -1,0 +1,92 @@
+{
+  "title": "Clean URLs - Remove IDs, 301 Redirects & SEO URLs",
+  "subtitle": "User guide",
+  "labels": { "version": "Version", "author": "Author", "contact": "Contact", "page": "Page", "contents": "Contents", "compat": "Compatibility" },
+  "sections": [
+    { "title": "Overview", "content": [
+      { "p": "PrestaShop puts ID numbers in every URL, like /12-blue-shirt.html or /3-clothes. Clean URLs removes them, so your addresses become /men/blue-shirt.html and /clothes: easier to read, share and rank." },
+      { "p": "**What the module does:**" },
+      { "ul": ["Removes IDs from product, category, CMS page, CMS category, brand and supplier URLs", "Redirects every old URL with an ID to its new address with a 301", "Remembers renamed URLs, so old links keep working", "Lets you add your own 301, 302, 303, 307 and 308 redirects (exact, starts with, or regular expression)", "Logs 404 errors so you can redirect them in one click", "Finds duplicate URLs and fixes them automatically", "Serves a live XML sitemap with all languages (hreflang) and product images"] },
+      { "p": "It works without overriding any PrestaShop class or theme file." }
+    ] },
+    { "title": "Requirements", "content": [
+      { "ul": ["PrestaShop 9.0 or newer", "PHP 8.1 or newer", "Friendly URLs turned on in **Shop Parameters > Traffic & SEO**"] }
+    ] },
+    { "title": "Installation", "content": [
+      { "ol": ["Go to **Modules > Module Manager** and click **Upload a module**.", "Choose cleanurls-x.y.z.zip.", "Click **Configure**."] },
+      { "p": "Your URLs change as soon as the module is installed. Every old address keeps working: it now sends visitors and search engines to the new one with a 301." },
+      { "note": "Clear the cache in Advanced Parameters > Performance after installing, so cached pages show the new links." }
+    ] },
+    { "title": "Before and after", "content": [
+      { "table": [
+        ["Page", "Before → after"],
+        ["Product", "/1-1-hummingbird-printed-t-shirt.html → /men/hummingbird-printed-t-shirt.html"],
+        ["Category", "/3-clothes → /clothes"],
+        ["CMS page", "/content/1-delivery → /content/delivery"],
+        ["CMS category", "/content/category/1-home → /content/category/home"],
+        ["Brand", "/brand/1-studio-design → /brand/studio-design"],
+        ["Supplier", "/supplier/1-fashion-supplier → /supplier/fashion-supplier"]
+      ] },
+      { "p": "The settings page shows these examples with your own products, so you can check them before going live." }
+    ] },
+    { "title": "URL patterns", "content": [
+      { "p": "Each page type has a pattern you can change in the **URL settings** tab. Every pattern must contain {rewrite} (the friendly URL of the page) and must not contain {id}." },
+      { "table": [
+        ["Keyword", "Meaning"],
+        ["{rewrite}", "The friendly URL of the page. Required."],
+        ["{category:/}", "Products only: the default category, followed by a slash."],
+        ["{categories:/}", "Products and categories: the full parent category path, like clothes/men/."]
+      ] },
+      { "p": "Each page type can be switched off separately. Switched-off types keep the PrestaShop format with IDs." }
+    ] },
+    { "title": "Old URLs and renamed pages", "content": [
+      { "p": "**Redirect old URLs with IDs:** any address in the old format, like /12-blue-shirt.html, is sent to the new URL with a 301. Search engines move your rankings to the new address, and old links on other sites keep working. Query strings such as ?page=2 are kept." },
+      { "p": "**Remember renamed URLs:** when you change the friendly URL of a product, category, page, brand or supplier, the old address is stored and redirects to the new one." }
+    ] },
+    { "title": "Product combinations", "content": [
+      { "p": "With IDs, PrestaShop picked a combination from the number in the URL. Clean URLs keeps the combination in the part after #, like /men/hummingbird-printed-t-shirt.html#/2-size-m/11-color-black. A small script on the product page selects that size and color, and PrestaShop loads the right price, stock and images." },
+      { "note": "Old links to a combination, like /1-2-hummingbird-printed-t-shirt.html, are redirected to the new URL with the right combination selected." }
+    ] },
+    { "title": "Redirect manager", "content": [
+      { "p": "In the **Redirects** tab you can send any old address to a new one, for example after moving or deleting a page." },
+      { "table": [
+        ["Match", "Example"],
+        ["Exact URL", "old-shop/summer-sale → women"],
+        ["Starts with", "promo → https://example.com/landing (catches promo-2025, promo/abc…)"],
+        ["Regular expression", "^blog/(.*)$ → content/$1"]
+      ] },
+      { "table": [
+        ["Type", "Use it for"],
+        ["301", "Permanent moves. Best for SEO."],
+        ["302 / 307", "Temporary moves, like a sale page."],
+        ["303", "Redirect after a form."],
+        ["308", "Permanent move that keeps the request method."]
+      ] },
+      { "p": "Each redirect counts its hits and shows when it was last used." }
+    ] },
+    { "title": "404 monitor", "content": [
+      { "p": "The **404 monitor** tab lists addresses that led to a \"page not found\" error, with the number of hits and where visitors came from. Click **Redirect** to send that address to a working page; it then leaves the list." },
+      { "p": "By default, missing pages show your 404 page, which is the right answer for search engines. You can choose to send visitors to the home page instead, but this can hide real problems." }
+    ] },
+    { "title": "Duplicate URLs", "content": [
+      { "p": "Without IDs, two pages with the same friendly URL would share one address. The **Duplicate URLs** tab lists them, and also categories whose URL equals a store page such as contact-us." },
+      { "p": "Click **Fix automatically** to rename the extra pages to name-2, name-3 and so on. The first page keeps its URL, and the old addresses redirect." }
+    ] },
+    { "title": "XML sitemap", "content": [
+      { "p": "Your sitemap is always up to date at https://your-shop.com/sitemap.xml. It lists products, categories, CMS pages, brands and suppliers, with every translation (hreflang) and the product images. No cron job is needed." },
+      { "ol": ["Open the **Sitemap** tab and copy the sitemap URL.", "Submit it in Google Search Console and Bing Webmaster Tools.", "Click **Add to robots.txt** so other search engines find it too."] }
+    ] },
+    { "title": "Good to know", "content": [
+      { "ul": ["No PrestaShop classes or theme files are overridden. The module uses PrestaShop's routing hooks.", "Supplier pages only open if they are turned on in Shop Parameters > Product Settings.", "If you uninstall the module, your URLs go back to the format with IDs. Links to the clean addresses will then stop working, so keep the module installed once you use it.", "Each shop of a multistore keeps its own redirects, 404 log and sitemap."] }
+    ] },
+    { "title": "Troubleshooting", "content": [
+      { "p": "**Links still show IDs.** Clear the cache in Advanced Parameters > Performance, and make sure friendly URLs are turned on." },
+      { "p": "**A page shows \"page not found\".** Look at the Duplicate URLs tab: the URL may be used twice, or by a store page." },
+      { "p": "**The wrong combination is selected.** Make sure your theme loads PrestaShop's standard product scripts; the module selects the combination when the page has loaded." }
+    ] },
+    { "title": "Support", "content": [
+      { "p": "This module is free and open source under the Academic Free License 3.0. For questions, bug reports or custom work:" },
+      { "ul": ["E-mail: iamshoaibktk@gmail.com", "WhatsApp: +923459016286"] }
+    ] }
+  ]
+}

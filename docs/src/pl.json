@@ -1,0 +1,92 @@
+{
+  "title": "Clean URLs - Usuń ID, przekierowania 301 i adresy SEO",
+  "subtitle": "Instrukcja obsługi",
+  "labels": { "version": "Wersja", "author": "Autor", "contact": "Kontakt", "page": "Strona", "contents": "Spis treści", "compat": "Zgodność" },
+  "sections": [
+    { "title": "Przegląd", "content": [
+      { "p": "PrestaShop umieszcza numery ID w każdym adresie, np. /12-blue-shirt.html lub /3-clothes. Clean URLs je usuwa, więc adresy zmieniają się w /men/blue-shirt.html i /clothes: łatwiejsze do czytania, udostępniania i pozycjonowania." },
+      { "p": "**Co robi moduł:**" },
+      { "ul": ["Usuwa ID z adresów produktów, kategorii, stron CMS, kategorii CMS, marek i dostawców", "Przekierowuje każdy stary adres z ID na nowy przekierowaniem 301", "Zapamiętuje zmienione adresy, więc stare linki nadal działają", "Pozwala dodawać własne przekierowania 301, 302, 303, 307 i 308 (dokładne, zaczyna się od lub wyrażenie regularne)", "Zapisuje błędy 404, by przekierować je jednym kliknięciem", "Wykrywa zduplikowane adresy i naprawia je automatycznie", "Udostępnia mapę XML na żywo we wszystkich językach (hreflang) ze zdjęciami produktów"] },
+      { "p": "Działa bez nadpisywania jakichkolwiek klas PrestaShop i plików motywu." }
+    ] },
+    { "title": "Wymagania", "content": [
+      { "ul": ["PrestaShop 9.0 lub nowszy", "PHP 8.1 lub nowszy", "Przyjazne adresy URL włączone w **Preferencje sklepu > Ruch i SEO**"] }
+    ] },
+    { "title": "Instalacja", "content": [
+      { "ol": ["Przejdź do **Moduły > Menedżer modułów** i kliknij **Prześlij moduł**.", "Wybierz cleanurls-x.y.z.zip.", "Kliknij **Konfiguruj**."] },
+      { "p": "Adresy zmieniają się zaraz po instalacji modułu. Każdy stary adres nadal działa: kieruje teraz odwiedzających i wyszukiwarki na nowy przekierowaniem 301." },
+      { "note": "Po instalacji wyczyść pamięć podręczną w Zaawansowane > Wydajność, aby strony z pamięci podręcznej pokazywały nowe linki." }
+    ] },
+    { "title": "Przed i po", "content": [
+      { "table": [
+        ["Strona", "Przed → po"],
+        ["Produkt", "/1-1-hummingbird-printed-t-shirt.html → /men/hummingbird-printed-t-shirt.html"],
+        ["Kategoria", "/3-clothes → /clothes"],
+        ["Strona CMS", "/content/1-delivery → /content/delivery"],
+        ["Kategoria CMS", "/content/category/1-home → /content/category/home"],
+        ["Marka", "/brand/1-studio-design → /brand/studio-design"],
+        ["Dostawca", "/supplier/1-fashion-supplier → /supplier/fashion-supplier"]
+      ] },
+      { "p": "Strona ustawień pokazuje te przykłady na Twoich produktach, aby sprawdzić je przed publikacją." }
+    ] },
+    { "title": "Wzorce adresów", "content": [
+      { "p": "Każdy typ strony ma wzorzec, który zmienisz w zakładce **Ustawienia adresów**. Każdy wzorzec musi zawierać {rewrite} (przyjazny adres strony) i nie może zawierać {id}." },
+      { "table": [
+        ["Słowo kluczowe", "Znaczenie"],
+        ["{rewrite}", "Przyjazny adres strony. Wymagane."],
+        ["{category:/}", "Tylko produkty: kategoria domyślna, a po niej ukośnik."],
+        ["{categories:/}", "Produkty i kategorie: pełna ścieżka kategorii nadrzędnych, np. clothes/men/."]
+      ] },
+      { "p": "Każdy typ strony można wyłączyć osobno. Wyłączone typy zachowują format PrestaShop z ID." }
+    ] },
+    { "title": "Stare adresy i zmienione strony", "content": [
+      { "p": "**Przekierowuj stare adresy z ID:** każdy adres w starym formacie, np. /12-blue-shirt.html, trafia na nowy adres przekierowaniem 301. Wyszukiwarki przenoszą pozycje na nowy adres, a stare linki na innych stronach nadal działają. Parametry takie jak ?page=2 są zachowywane." },
+      { "p": "**Zapamiętuj zmienione adresy:** gdy zmienisz przyjazny adres produktu, kategorii, strony, marki lub dostawcy, stary adres zostaje zapisany i przekierowuje na nowy." }
+    ] },
+    { "title": "Kombinacje produktów", "content": [
+      { "p": "Z ID PrestaShop wybierał kombinację na podstawie numeru w adresie. Clean URLs trzyma kombinację w części po #, np. /men/hummingbird-printed-t-shirt.html#/2-size-m/11-color-black. Mały skrypt na stronie produktu wybiera ten rozmiar i kolor, a PrestaShop wczytuje właściwą cenę, stan i zdjęcia." },
+      { "note": "Stare linki do kombinacji, np. /1-2-hummingbird-printed-t-shirt.html, przekierowują na nowy adres z wybraną właściwą kombinacją." }
+    ] },
+    { "title": "Menedżer przekierowań", "content": [
+      { "p": "W zakładce **Przekierowania** możesz skierować dowolny stary adres na nowy, np. po przeniesieniu lub usunięciu strony." },
+      { "table": [
+        ["Dopasowanie", "Przykład"],
+        ["Dokładny adres", "old-shop/summer-sale → women"],
+        ["Zaczyna się od", "promo → https://example.com/landing (łapie promo-2025, promo/abc…)"],
+        ["Wyrażenie regularne", "^blog/(.*)$ → content/$1"]
+      ] },
+      { "table": [
+        ["Typ", "Zastosowanie"],
+        ["301", "Stałe przeniesienia. Najlepsze dla SEO."],
+        ["302 / 307", "Tymczasowe przeniesienia, np. strona wyprzedaży."],
+        ["303", "Przekierowanie po formularzu."],
+        ["308", "Stałe przeniesienie z zachowaniem metody żądania."]
+      ] },
+      { "p": "Każde przekierowanie liczy wejścia i pokazuje datę ostatniego użycia." }
+    ] },
+    { "title": "Monitor 404", "content": [
+      { "p": "Zakładka **Monitor 404** pokazuje adresy, które zakończyły się błędem „nie znaleziono strony”, z liczbą wejść i źródłem. Kliknij **Przekieruj**, aby skierować adres na działającą stronę; wtedy znika z listy." },
+      { "p": "Domyślnie brakujące strony pokazują stronę 404, co jest właściwą odpowiedzią dla wyszukiwarek. Możesz kierować odwiedzających na stronę główną, ale może to ukryć prawdziwe problemy." }
+    ] },
+    { "title": "Zduplikowane adresy", "content": [
+      { "p": "Bez ID dwie strony z tym samym przyjaznym adresem dzieliłyby jeden adres. Zakładka **Zduplikowane adresy** pokazuje je, a także kategorie, których adres jest taki sam jak strona sklepu, np. contact-us." },
+      { "p": "Kliknij **Napraw automatycznie**, aby zmienić nadmiarowe strony na nazwa-2, nazwa-3 itd. Pierwsza strona zachowuje adres, a stare adresy przekierowują." }
+    ] },
+    { "title": "Mapa strony XML", "content": [
+      { "p": "Mapa strony jest zawsze aktualna pod adresem https://twoj-sklep.pl/sitemap.xml. Zawiera produkty, kategorie, strony CMS, marki i dostawców, z każdym tłumaczeniem (hreflang) i zdjęciami produktów. Nie potrzeba zadań cron." },
+      { "ol": ["Otwórz zakładkę **Mapa strony** i skopiuj jej adres.", "Zgłoś go w Google Search Console i Bing Webmaster Tools.", "Kliknij **Dodaj do robots.txt**, aby inne wyszukiwarki też ją znalazły."] }
+    ] },
+    { "title": "Warto wiedzieć", "content": [
+      { "ul": ["Żadne klasy PrestaShop ani pliki motywu nie są nadpisywane. Moduł korzysta z hooków routingu PrestaShop.", "Strony dostawców otwierają się tylko, gdy są włączone w Preferencje sklepu > Ustawienia produktów.", "Po odinstalowaniu modułu adresy wracają do formatu z ID. Linki do czystych adresów przestaną działać, więc po wdrożeniu zostaw moduł zainstalowany.", "Każdy sklep w multisklepie ma własne przekierowania, dziennik 404 i mapę strony."] }
+    ] },
+    { "title": "Rozwiązywanie problemów", "content": [
+      { "p": "**Linki nadal pokazują ID.** Wyczyść pamięć podręczną w Zaawansowane > Wydajność i sprawdź, czy przyjazne adresy są włączone." },
+      { "p": "**Strona pokazuje „nie znaleziono strony”.** Sprawdź zakładkę Zduplikowane adresy: adres może być użyty dwa razy albo przez stronę sklepu." },
+      { "p": "**Wybierana jest zła kombinacja.** Upewnij się, że motyw wczytuje standardowe skrypty produktu PrestaShop; moduł wybiera kombinację po wczytaniu strony." }
+    ] },
+    { "title": "Wsparcie", "content": [
+      { "p": "Ten moduł jest darmowy i otwartoźródłowy na licencji Academic Free License 3.0. W sprawie pytań, zgłoszeń błędów lub prac na zamówienie:" },
+      { "ul": ["E-mail: iamshoaibktk@gmail.com", "WhatsApp: +923459016286"] }
+    ] }
+  ]
+}

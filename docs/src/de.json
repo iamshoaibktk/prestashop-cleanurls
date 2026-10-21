@@ -1,0 +1,92 @@
+{
+  "title": "Clean URLs - IDs entfernen, 301-Weiterleitungen und SEO-URLs",
+  "subtitle": "Benutzerhandbuch",
+  "labels": { "version": "Version", "author": "Autor", "contact": "Kontakt", "page": "Seite", "contents": "Inhalt", "compat": "Kompatibilität" },
+  "sections": [
+    { "title": "Überblick", "content": [
+      { "p": "PrestaShop setzt ID-Nummern in jede URL, etwa /12-blue-shirt.html oder /3-clothes. Clean URLs entfernt sie, Ihre Adressen werden zu /men/blue-shirt.html und /clothes: leichter zu lesen, zu teilen und besser für das Ranking." },
+      { "p": "**Was das Modul macht:**" },
+      { "ul": ["Entfernt IDs aus den URLs von Produkten, Kategorien, CMS-Seiten, CMS-Kategorien, Marken und Lieferanten", "Leitet jede alte URL mit ID per 301 auf die neue Adresse weiter", "Merkt sich umbenannte URLs, damit alte Links weiter funktionieren", "Eigene 301-, 302-, 303-, 307- und 308-Weiterleitungen (exakt, beginnt mit oder regulärer Ausdruck)", "Protokolliert 404-Fehler, damit Sie sie mit einem Klick weiterleiten können", "Findet doppelte URLs und behebt sie automatisch", "Liefert eine Live-XML-Sitemap mit allen Sprachen (hreflang) und Produktbildern"] },
+      { "p": "Es funktioniert, ohne eine PrestaShop-Klasse oder Theme-Datei zu überschreiben." }
+    ] },
+    { "title": "Voraussetzungen", "content": [
+      { "ul": ["PrestaShop 9.0 oder neuer", "PHP 8.1 oder neuer", "Suchmaschinenfreundliche URLs aktiviert unter **Shop-Parameter > Traffic & SEO**"] }
+    ] },
+    { "title": "Installation", "content": [
+      { "ol": ["Gehen Sie zu **Module > Modul-Manager** und klicken Sie auf **Modul hochladen**.", "Wählen Sie cleanurls-x.y.z.zip.", "Klicken Sie auf **Konfigurieren**."] },
+      { "p": "Ihre URLs ändern sich sofort nach der Installation. Jede alte Adresse funktioniert weiter: Sie schickt Besucher und Suchmaschinen jetzt per 301 zur neuen." },
+      { "note": "Leeren Sie nach der Installation den Cache unter Erweiterte Einstellungen > Leistung, damit gecachte Seiten die neuen Links zeigen." }
+    ] },
+    { "title": "Vorher und nachher", "content": [
+      { "table": [
+        ["Seite", "Vorher → nachher"],
+        ["Produkt", "/1-1-hummingbird-printed-t-shirt.html → /men/hummingbird-printed-t-shirt.html"],
+        ["Kategorie", "/3-clothes → /clothes"],
+        ["CMS-Seite", "/content/1-delivery → /content/delivery"],
+        ["CMS-Kategorie", "/content/category/1-home → /content/category/home"],
+        ["Marke", "/brand/1-studio-design → /brand/studio-design"],
+        ["Lieferant", "/supplier/1-fashion-supplier → /supplier/fashion-supplier"]
+      ] },
+      { "p": "Die Einstellungsseite zeigt diese Beispiele mit Ihren eigenen Produkten, damit Sie sie vor dem Livegang prüfen können." }
+    ] },
+    { "title": "URL-Muster", "content": [
+      { "p": "Jeder Seitentyp hat ein Muster, das Sie im Tab **URL-Einstellungen** ändern können. Jedes Muster muss {rewrite} (die sprechende URL der Seite) enthalten und darf kein {id} enthalten." },
+      { "table": [
+        ["Schlüsselwort", "Bedeutung"],
+        ["{rewrite}", "Die sprechende URL der Seite. Pflicht."],
+        ["{category:/}", "Nur Produkte: die Standardkategorie, gefolgt von einem Schrägstrich."],
+        ["{categories:/}", "Produkte und Kategorien: der vollständige Pfad der übergeordneten Kategorien, z. B. clothes/men/."]
+      ] },
+      { "p": "Jeder Seitentyp lässt sich einzeln abschalten. Abgeschaltete Typen behalten das PrestaShop-Format mit IDs." }
+    ] },
+    { "title": "Alte URLs und umbenannte Seiten", "content": [
+      { "p": "**Alte URLs mit IDs weiterleiten:** Jede Adresse im alten Format, etwa /12-blue-shirt.html, wird per 301 zur neuen URL geschickt. Suchmaschinen übertragen Ihr Ranking auf die neue Adresse, und alte Links auf anderen Websites funktionieren weiter. Parameter wie ?page=2 bleiben erhalten." },
+      { "p": "**Umbenannte URLs merken:** Wenn Sie die URL eines Produkts, einer Kategorie, Seite, Marke oder eines Lieferanten ändern, wird die alte Adresse gespeichert und leitet zur neuen weiter." }
+    ] },
+    { "title": "Produktkombinationen", "content": [
+      { "p": "Mit IDs wählte PrestaShop eine Kombination anhand der Nummer in der URL. Clean URLs speichert die Kombination im Teil nach #, etwa /men/hummingbird-printed-t-shirt.html#/2-size-m/11-color-black. Ein kleines Skript auf der Produktseite wählt diese Größe und Farbe, und PrestaShop lädt den richtigen Preis, Bestand und die Bilder." },
+      { "note": "Alte Links zu einer Kombination, etwa /1-2-hummingbird-printed-t-shirt.html, werden zur neuen URL mit der richtigen Kombination weitergeleitet." }
+    ] },
+    { "title": "Weiterleitungsverwaltung", "content": [
+      { "p": "Im Tab **Weiterleitungen** können Sie jede alte Adresse auf eine neue schicken, zum Beispiel nach dem Verschieben oder Löschen einer Seite." },
+      { "table": [
+        ["Abgleich", "Beispiel"],
+        ["Exakte URL", "old-shop/summer-sale → women"],
+        ["Beginnt mit", "promo → https://example.com/landing (erfasst promo-2025, promo/abc…)"],
+        ["Regulärer Ausdruck", "^blog/(.*)$ → content/$1"]
+      ] },
+      { "table": [
+        ["Typ", "Einsatz"],
+        ["301", "Dauerhafte Umzüge. Am besten für SEO."],
+        ["302 / 307", "Vorübergehende Umzüge, etwa eine Sale-Seite."],
+        ["303", "Weiterleitung nach einem Formular."],
+        ["308", "Dauerhafter Umzug, der die Anfragemethode beibehält."]
+      ] },
+      { "p": "Jede Weiterleitung zählt ihre Aufrufe und zeigt die letzte Nutzung." }
+    ] },
+    { "title": "404-Monitor", "content": [
+      { "p": "Der Tab **404-Monitor** listet Adressen, die zu einem Fehler „Seite nicht gefunden“ geführt haben, mit Anzahl der Aufrufe und Herkunft. Klicken Sie auf **Weiterleiten**, um die Adresse auf eine funktionierende Seite zu schicken; danach verschwindet sie aus der Liste." },
+      { "p": "Standardmäßig zeigen fehlende Seiten Ihre 404-Seite – die richtige Antwort für Suchmaschinen. Sie können Besucher stattdessen auf die Startseite schicken, das kann aber echte Probleme verdecken." }
+    ] },
+    { "title": "Doppelte URLs", "content": [
+      { "p": "Ohne IDs würden sich zwei Seiten mit derselben URL eine Adresse teilen. Der Tab **Doppelte URLs** listet sie auf, ebenso Kategorien, deren URL einer Shopseite wie contact-us entspricht." },
+      { "p": "Klicken Sie auf **Automatisch beheben**, um die überzähligen Seiten in name-2, name-3 usw. umzubenennen. Die erste Seite behält ihre URL, und die alten Adressen leiten weiter." }
+    ] },
+    { "title": "XML-Sitemap", "content": [
+      { "p": "Ihre Sitemap ist immer aktuell unter https://ihr-shop.de/sitemap.xml. Sie enthält Produkte, Kategorien, CMS-Seiten, Marken und Lieferanten mit jeder Übersetzung (hreflang) und den Produktbildern. Kein Cronjob nötig." },
+      { "ol": ["Öffnen Sie den Tab **Sitemap** und kopieren Sie die Sitemap-URL.", "Reichen Sie sie in der Google Search Console und den Bing Webmaster Tools ein.", "Klicken Sie auf **Zu robots.txt hinzufügen**, damit auch andere Suchmaschinen sie finden."] }
+    ] },
+    { "title": "Gut zu wissen", "content": [
+      { "ul": ["Es werden keine PrestaShop-Klassen oder Theme-Dateien überschrieben. Das Modul nutzt die Routing-Hooks von PrestaShop.", "Lieferantenseiten öffnen sich nur, wenn sie unter Shop-Parameter > Produkteinstellungen aktiviert sind.", "Wenn Sie das Modul deinstallieren, kehren Ihre URLs zum Format mit IDs zurück. Links auf die sauberen Adressen funktionieren dann nicht mehr; lassen Sie das Modul also installiert, sobald Sie es nutzen.", "Jeder Shop eines Multishops hat eigene Weiterleitungen, ein eigenes 404-Protokoll und eine eigene Sitemap."] }
+    ] },
+    { "title": "Fehlerbehebung", "content": [
+      { "p": "**Links zeigen noch IDs.** Leeren Sie den Cache unter Erweiterte Einstellungen > Leistung und prüfen Sie, ob suchmaschinenfreundliche URLs aktiviert sind." },
+      { "p": "**Eine Seite zeigt „Seite nicht gefunden“.** Sehen Sie im Tab Doppelte URLs nach: Die URL wird vielleicht zweimal oder von einer Shopseite verwendet." },
+      { "p": "**Die falsche Kombination wird gewählt.** Prüfen Sie, ob Ihr Theme die Standard-Produktskripte von PrestaShop lädt; das Modul wählt die Kombination, sobald die Seite geladen ist." }
+    ] },
+    { "title": "Support", "content": [
+      { "p": "Dieses Modul ist kostenlos und Open Source unter der Academic Free License 3.0. Für Fragen, Fehlermeldungen oder individuelle Anpassungen:" },
+      { "ul": ["E-Mail: iamshoaibktk@gmail.com", "WhatsApp: +923459016286"] }
+    ] }
+  ]
+}

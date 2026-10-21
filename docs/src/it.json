@@ -1,0 +1,92 @@
+{
+  "title": "Clean URLs - Rimuovi gli ID, redirect 301 e URL SEO",
+  "subtitle": "Guida utente",
+  "labels": { "version": "Versione", "author": "Autore", "contact": "Contatto", "page": "Pagina", "contents": "Indice", "compat": "Compatibilità" },
+  "sections": [
+    { "title": "Panoramica", "content": [
+      { "p": "PrestaShop inserisce numeri di ID in ogni URL, come /12-blue-shirt.html o /3-clothes. Clean URLs li rimuove: gli indirizzi diventano /men/blue-shirt.html e /clothes, più facili da leggere, condividere e posizionare." },
+      { "p": "**Cosa fa il modulo:**" },
+      { "ul": ["Rimuove gli ID dagli URL di prodotti, categorie, pagine CMS, categorie CMS, marchi e fornitori", "Reindirizza ogni vecchio URL con ID al nuovo indirizzo con un 301", "Ricorda gli URL rinominati, così i vecchi link continuano a funzionare", "Permette di aggiungere redirect 301, 302, 303, 307 e 308 (esatto, inizia con o espressione regolare)", "Registra gli errori 404 per reindirizzarli con un clic", "Trova gli URL duplicati e li corregge automaticamente", "Fornisce una sitemap XML dal vivo con tutte le lingue (hreflang) e le immagini dei prodotti"] },
+      { "p": "Funziona senza sovrascrivere alcuna classe di PrestaShop né file del tema." }
+    ] },
+    { "title": "Requisiti", "content": [
+      { "ul": ["PrestaShop 9.0 o successivo", "PHP 8.1 o successivo", "URL semplificati attivi in **Parametri negozio > Traffico e SEO**"] }
+    ] },
+    { "title": "Installazione", "content": [
+      { "ol": ["Vai su **Moduli > Gestione moduli** e clicca su **Carica un modulo**.", "Scegli cleanurls-x.y.z.zip.", "Clicca su **Configura**."] },
+      { "p": "Gli URL cambiano appena il modulo è installato. Ogni vecchio indirizzo continua a funzionare: ora porta visitatori e motori di ricerca al nuovo con un 301." },
+      { "note": "Svuota la cache in Parametri avanzati > Prestazioni dopo l'installazione, così le pagine in cache mostrano i nuovi link." }
+    ] },
+    { "title": "Prima e dopo", "content": [
+      { "table": [
+        ["Pagina", "Prima → dopo"],
+        ["Prodotto", "/1-1-hummingbird-printed-t-shirt.html → /men/hummingbird-printed-t-shirt.html"],
+        ["Categoria", "/3-clothes → /clothes"],
+        ["Pagina CMS", "/content/1-delivery → /content/delivery"],
+        ["Categoria CMS", "/content/category/1-home → /content/category/home"],
+        ["Marchio", "/brand/1-studio-design → /brand/studio-design"],
+        ["Fornitore", "/supplier/1-fashion-supplier → /supplier/fashion-supplier"]
+      ] },
+      { "p": "La pagina delle impostazioni mostra questi esempi con i tuoi prodotti, per controllarli prima di andare online." }
+    ] },
+    { "title": "Schemi URL", "content": [
+      { "p": "Ogni tipo di pagina ha uno schema modificabile nella scheda **Impostazioni URL**. Ogni schema deve contenere {rewrite} (l'URL semplificato della pagina) e non deve contenere {id}." },
+      { "table": [
+        ["Parola chiave", "Significato"],
+        ["{rewrite}", "L'URL semplificato della pagina. Obbligatoria."],
+        ["{category:/}", "Solo prodotti: la categoria predefinita, seguita da una barra."],
+        ["{categories:/}", "Prodotti e categorie: il percorso completo delle categorie padre, come clothes/men/."]
+      ] },
+      { "p": "Ogni tipo di pagina si può disattivare separatamente. I tipi disattivati mantengono il formato PrestaShop con ID." }
+    ] },
+    { "title": "Vecchi URL e pagine rinominate", "content": [
+      { "p": "**Reindirizza i vecchi URL con ID:** ogni indirizzo nel vecchio formato, come /12-blue-shirt.html, viene inviato al nuovo URL con un 301. I motori di ricerca trasferiscono il posizionamento al nuovo indirizzo e i vecchi link su altri siti continuano a funzionare. Parametri come ?page=2 vengono mantenuti." },
+      { "p": "**Ricorda gli URL rinominati:** quando modifichi l'URL semplificato di un prodotto, una categoria, una pagina, un marchio o un fornitore, il vecchio indirizzo viene salvato e reindirizza al nuovo." }
+    ] },
+    { "title": "Combinazioni di prodotto", "content": [
+      { "p": "Con gli ID, PrestaShop sceglieva una combinazione dal numero nell'URL. Clean URLs tiene la combinazione nella parte dopo #, come /men/hummingbird-printed-t-shirt.html#/2-size-m/11-color-black. Un piccolo script nella pagina prodotto seleziona taglia e colore, e PrestaShop carica prezzo, stock e immagini corretti." },
+      { "note": "I vecchi link a una combinazione, come /1-2-hummingbird-printed-t-shirt.html, vengono reindirizzati al nuovo URL con la combinazione giusta selezionata." }
+    ] },
+    { "title": "Gestione dei redirect", "content": [
+      { "p": "Nella scheda **Redirect** puoi inviare qualsiasi vecchio indirizzo a uno nuovo, ad esempio dopo aver spostato o eliminato una pagina." },
+      { "table": [
+        ["Corrispondenza", "Esempio"],
+        ["URL esatto", "old-shop/summer-sale → women"],
+        ["Inizia con", "promo → https://example.com/landing (cattura promo-2025, promo/abc…)"],
+        ["Espressione regolare", "^blog/(.*)$ → content/$1"]
+      ] },
+      { "table": [
+        ["Tipo", "Quando usarlo"],
+        ["301", "Spostamenti permanenti. La scelta migliore per la SEO."],
+        ["302 / 307", "Spostamenti temporanei, come una pagina di saldi."],
+        ["303", "Redirect dopo un modulo."],
+        ["308", "Spostamento permanente che mantiene il metodo della richiesta."]
+      ] },
+      { "p": "Ogni redirect conta le visite e mostra l'ultimo utilizzo." }
+    ] },
+    { "title": "Monitor 404", "content": [
+      { "p": "La scheda **Monitor 404** elenca gli indirizzi che hanno dato un errore «pagina non trovata», con il numero di visite e la provenienza. Clicca su **Reindirizza** per inviare quell'indirizzo a una pagina valida; poi esce dall'elenco." },
+      { "p": "Per impostazione predefinita, le pagine mancanti mostrano la pagina 404, che è la risposta corretta per i motori di ricerca. Puoi mandare i visitatori alla home, ma così rischi di nascondere problemi reali." }
+    ] },
+    { "title": "URL duplicati", "content": [
+      { "p": "Senza ID, due pagine con lo stesso URL semplificato condividerebbero un indirizzo. La scheda **URL duplicati** le elenca, insieme alle categorie il cui URL coincide con una pagina del negozio come contact-us." },
+      { "p": "Clicca su **Correggi automaticamente** per rinominare le pagine in più in nome-2, nome-3 e così via. La prima pagina mantiene il suo URL e i vecchi indirizzi reindirizzano." }
+    ] },
+    { "title": "Sitemap XML", "content": [
+      { "p": "La sitemap è sempre aggiornata su https://tuo-negozio.com/sitemap.xml. Elenca prodotti, categorie, pagine CMS, marchi e fornitori, con ogni traduzione (hreflang) e le immagini dei prodotti. Nessun cron job necessario." },
+      { "ol": ["Apri la scheda **Sitemap** e copia l'URL della sitemap.", "Inviala in Google Search Console e Bing Webmaster Tools.", "Clicca su **Aggiungi a robots.txt** perché la trovino anche gli altri motori."] }
+    ] },
+    { "title": "Da sapere", "content": [
+      { "ul": ["Nessuna classe di PrestaShop né file del tema viene sovrascritto. Il modulo usa gli hook di routing di PrestaShop.", "Le pagine dei fornitori si aprono solo se attivate in Parametri negozio > Impostazioni prodotti.", "Se disinstalli il modulo, gli URL tornano al formato con ID. I link agli indirizzi puliti smetteranno di funzionare: una volta in uso, tieni il modulo installato.", "Ogni negozio di un multinegozio ha i propri redirect, registro 404 e sitemap."] }
+    ] },
+    { "title": "Risoluzione dei problemi", "content": [
+      { "p": "**I link mostrano ancora gli ID.** Svuota la cache in Parametri avanzati > Prestazioni e controlla che gli URL semplificati siano attivi." },
+      { "p": "**Una pagina mostra «pagina non trovata».** Guarda la scheda URL duplicati: l'URL potrebbe essere usato due volte o da una pagina del negozio." },
+      { "p": "**Viene selezionata la combinazione sbagliata.** Verifica che il tema carichi gli script prodotto standard di PrestaShop; il modulo seleziona la combinazione a pagina caricata." }
+    ] },
+    { "title": "Supporto", "content": [
+      { "p": "Questo modulo è gratuito e open source con licenza Academic Free License 3.0. Per domande, segnalazioni di bug o sviluppi su misura:" },
+      { "ul": ["E-mail: iamshoaibktk@gmail.com", "WhatsApp: +923459016286"] }
+    ] }
+  ]
+}

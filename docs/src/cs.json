@@ -1,0 +1,92 @@
+{
+  "title": "Clean URLs - Odstranění ID, přesměrování 301 a SEO URL",
+  "subtitle": "Uživatelská příručka",
+  "labels": { "version": "Verze", "author": "Autor", "contact": "Kontakt", "page": "Strana", "contents": "Obsah", "compat": "Kompatibilita" },
+  "sections": [
+    { "title": "Přehled", "content": [
+      { "p": "PrestaShop vkládá do každé URL čísla ID, například /12-blue-shirt.html nebo /3-clothes. Clean URLs je odstraní, takže adresy budou /men/blue-shirt.html a /clothes: snáze se čtou, sdílejí a lépe se umisťují ve vyhledávání." },
+      { "p": "**Co modul dělá:**" },
+      { "ul": ["Odstraní ID z URL produktů, kategorií, CMS stránek, CMS kategorií, značek a dodavatelů", "Přesměruje každou starou URL s ID na novou adresu kódem 301", "Pamatuje si přejmenované URL, takže staré odkazy dál fungují", "Umožní přidat vlastní přesměrování 301, 302, 303, 307 a 308 (přesná shoda, začíná na nebo regulární výraz)", "Zaznamenává chyby 404, abyste je mohli přesměrovat jedním kliknutím", "Najde duplicitní URL a opraví je automaticky", "Poskytuje živou XML sitemapu ve všech jazycích (hreflang) s obrázky produktů"] },
+      { "p": "Funguje bez přepisování jakékoli třídy PrestaShopu nebo souboru motivu." }
+    ] },
+    { "title": "Požadavky", "content": [
+      { "ul": ["PrestaShop 9.0 nebo novější", "PHP 8.1 nebo novější", "Přátelské URL zapnuté v **Parametry obchodu > Provoz a SEO**"] }
+    ] },
+    { "title": "Instalace", "content": [
+      { "ol": ["Přejděte do **Moduly > Správce modulů** a klikněte na **Nahrát modul**.", "Vyberte cleanurls-x.y.z.zip.", "Klikněte na **Konfigurovat**."] },
+      { "p": "URL se změní ihned po instalaci modulu. Každá stará adresa dál funguje: nyní posílá návštěvníky i vyhledávače na novou kódem 301." },
+      { "note": "Po instalaci vymažte mezipaměť v Pokročilé parametry > Výkon, aby stránky z mezipaměti ukazovaly nové odkazy." }
+    ] },
+    { "title": "Před a po", "content": [
+      { "table": [
+        ["Stránka", "Před → po"],
+        ["Produkt", "/1-1-hummingbird-printed-t-shirt.html → /men/hummingbird-printed-t-shirt.html"],
+        ["Kategorie", "/3-clothes → /clothes"],
+        ["CMS stránka", "/content/1-delivery → /content/delivery"],
+        ["CMS kategorie", "/content/category/1-home → /content/category/home"],
+        ["Značka", "/brand/1-studio-design → /brand/studio-design"],
+        ["Dodavatel", "/supplier/1-fashion-supplier → /supplier/fashion-supplier"]
+      ] },
+      { "p": "Stránka nastavení ukazuje tyto příklady na vašich produktech, abyste je mohli zkontrolovat před spuštěním." }
+    ] },
+    { "title": "Vzory URL", "content": [
+      { "p": "Každý typ stránky má vzor, který změníte na kartě **Nastavení URL**. Každý vzor musí obsahovat {rewrite} (přátelskou URL stránky) a nesmí obsahovat {id}." },
+      { "table": [
+        ["Klíčové slovo", "Význam"],
+        ["{rewrite}", "Přátelská URL stránky. Povinné."],
+        ["{category:/}", "Jen produkty: výchozí kategorie následovaná lomítkem."],
+        ["{categories:/}", "Produkty a kategorie: celá cesta nadřazených kategorií, např. clothes/men/."]
+      ] },
+      { "p": "Každý typ stránky lze vypnout zvlášť. Vypnuté typy si ponechají formát PrestaShopu s ID." }
+    ] },
+    { "title": "Staré URL a přejmenované stránky", "content": [
+      { "p": "**Přesměrovat staré URL s ID:** každá adresa ve starém formátu, např. /12-blue-shirt.html, se kódem 301 pošle na novou URL. Vyhledávače přenesou pozice na novou adresu a staré odkazy na jiných webech dál fungují. Parametry jako ?page=2 zůstanou zachovány." },
+      { "p": "**Pamatovat přejmenované URL:** když změníte přátelskou URL produktu, kategorie, stránky, značky nebo dodavatele, stará adresa se uloží a přesměrovává na novou." }
+    ] },
+    { "title": "Kombinace produktů", "content": [
+      { "p": "S ID vybíral PrestaShop kombinaci podle čísla v URL. Clean URLs uchovává kombinaci v části za #, např. /men/hummingbird-printed-t-shirt.html#/2-size-m/11-color-black. Malý skript na stránce produktu vybere tuto velikost a barvu a PrestaShop načte správnou cenu, sklad a obrázky." },
+      { "note": "Staré odkazy na kombinaci, např. /1-2-hummingbird-printed-t-shirt.html, se přesměrují na novou URL se správně vybranou kombinací." }
+    ] },
+    { "title": "Správa přesměrování", "content": [
+      { "p": "Na kartě **Přesměrování** můžete poslat jakoukoli starou adresu na novou, například po přesunutí nebo smazání stránky." },
+      { "table": [
+        ["Shoda", "Příklad"],
+        ["Přesná URL", "old-shop/summer-sale → women"],
+        ["Začíná na", "promo → https://example.com/landing (zachytí promo-2025, promo/abc…)"],
+        ["Regulární výraz", "^blog/(.*)$ → content/$1"]
+      ] },
+      { "table": [
+        ["Typ", "Kdy použít"],
+        ["301", "Trvalé přesuny. Nejlepší pro SEO."],
+        ["302 / 307", "Dočasné přesuny, například stránka výprodeje."],
+        ["303", "Přesměrování po formuláři."],
+        ["308", "Trvalý přesun, který zachová metodu požadavku."]
+      ] },
+      { "p": "Každé přesměrování počítá přístupy a ukazuje poslední použití." }
+    ] },
+    { "title": "Sledování 404", "content": [
+      { "p": "Karta **Sledování 404** vypisuje adresy, které skončily chybou „stránka nenalezena“, s počtem přístupů a odkud návštěvníci přišli. Klikněte na **Přesměrovat** a pošlete adresu na funkční stránku; pak ze seznamu zmizí." },
+      { "p": "Ve výchozím stavu chybějící stránky zobrazí vaši stránku 404, což je správná odpověď pro vyhledávače. Můžete návštěvníky posílat na úvodní stránku, to ale může skrýt skutečné problémy." }
+    ] },
+    { "title": "Duplicitní URL", "content": [
+      { "p": "Bez ID by dvě stránky se stejnou přátelskou URL sdílely jednu adresu. Karta **Duplicitní URL** je vypíše, stejně jako kategorie, jejichž URL je stejná jako stránka obchodu, např. contact-us." },
+      { "p": "Klikněte na **Opravit automaticky** a nadbytečné stránky se přejmenují na nazev-2, nazev-3 atd. První stránka si ponechá URL a staré adresy přesměrují." }
+    ] },
+    { "title": "XML sitemapa", "content": [
+      { "p": "Sitemapa je vždy aktuální na adrese https://vas-obchod.cz/sitemap.xml. Obsahuje produkty, kategorie, CMS stránky, značky a dodavatele s každým překladem (hreflang) a obrázky produktů. Cron úlohy nejsou potřeba." },
+      { "ol": ["Otevřete kartu **Sitemapa** a zkopírujte její URL.", "Odešlete ji v Google Search Console a Bing Webmaster Tools.", "Klikněte na **Přidat do robots.txt**, aby ji našly i další vyhledávače."] }
+    ] },
+    { "title": "Dobré vědět", "content": [
+      { "ul": ["Nepřepisují se žádné třídy PrestaShopu ani soubory motivu. Modul používá směrovací hooky PrestaShopu.", "Stránky dodavatelů se otevřou, jen když jsou zapnuté v Parametry obchodu > Nastavení produktů.", "Po odinstalování modulu se URL vrátí k formátu s ID. Odkazy na čisté adresy pak přestanou fungovat, proto modul po nasazení nechte nainstalovaný.", "Každý obchod v multistore má vlastní přesměrování, protokol 404 a sitemapu."] }
+    ] },
+    { "title": "Řešení problémů", "content": [
+      { "p": "**Odkazy stále obsahují ID.** Vymažte mezipaměť v Pokročilé parametry > Výkon a zkontrolujte, že jsou přátelské URL zapnuté." },
+      { "p": "**Stránka hlásí „stránka nenalezena“.** Podívejte se na kartu Duplicitní URL: URL může být použitá dvakrát nebo stránkou obchodu." },
+      { "p": "**Vybere se špatná kombinace.** Ověřte, že motiv načítá standardní produktové skripty PrestaShopu; modul vybere kombinaci po načtení stránky." }
+    ] },
+    { "title": "Podpora", "content": [
+      { "p": "Tento modul je zdarma a open source pod licencí Academic Free License 3.0. S dotazy, hlášením chyb nebo zakázkovou prací se obraťte na:" },
+      { "ul": ["E-mail: iamshoaibktk@gmail.com", "WhatsApp: +923459016286"] }
+    ] }
+  ]
+}
