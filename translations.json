@@ -1188,16 +1188,49 @@
       "pt-PT": "WhatsApp",
       "ru-RU": "WhatsApp"
     },
-    "Email": {
-      "fr-FR": "E-mail",
-      "es-ES": "Correo",
-      "it-IT": "E-mail",
-      "pl-PL": "E-mail",
-      "de-DE": "E-Mail",
-      "cs-CZ": "E-mail",
-      "nl-NL": "E-mail",
-      "pt-PT": "E-mail",
-      "ru-RU": "E-mail"
+    "Store design": {
+      "fr-FR": "Design de boutique",
+      "es-ES": "Diseño de tiendas",
+      "it-IT": "Design del negozio",
+      "pl-PL": "Projektowanie sklepów",
+      "de-DE": "Shop-Design",
+      "cs-CZ": "Design obchodu",
+      "nl-NL": "Winkelontwerp",
+      "pt-PT": "Design de lojas",
+      "ru-RU": "Дизайн магазина"
+    },
+    "Custom module development": {
+      "fr-FR": "Développement de modules sur mesure",
+      "es-ES": "Desarrollo de módulos a medida",
+      "it-IT": "Sviluppo di moduli su misura",
+      "pl-PL": "Moduły na zamówienie",
+      "de-DE": "Individuelle Modulentwicklung",
+      "cs-CZ": "Vývoj modulů na míru",
+      "nl-NL": "Modules op maat",
+      "pt-PT": "Desenvolvimento de módulos à medida",
+      "ru-RU": "Разработка модулей на заказ"
+    },
+    "Custom data migration (blogs, reviews, any platform)": {
+      "fr-FR": "Migration de données sur mesure (blogs, avis, toute plateforme)",
+      "es-ES": "Migración de datos a medida (blogs, reseñas, cualquier plataforma)",
+      "it-IT": "Migrazione dati su misura (blog, recensioni, qualsiasi piattaforma)",
+      "pl-PL": "Migracja danych na zamówienie (blogi, opinie, dowolna platforma)",
+      "de-DE": "Individuelle Datenmigration (Blogs, Bewertungen, jede Plattform)",
+      "cs-CZ": "Migrace dat na míru (blogy, recenze, jakákoli platforma)",
+      "nl-NL": "Gegevensmigratie op maat (blogs, reviews, elk platform)",
+      "pt-PT": "Migração de dados à medida (blogs, avaliações, qualquer plataforma)",
+      "ru-RU": "Перенос данных на заказ (блоги, отзывы, любая платформа)"
+    },
+    "Upgrades and bug fixes": {
+      "fr-FR": "Mises à jour et corrections",
+      "es-ES": "Actualizaciones y corrección de errores",
+      "it-IT": "Aggiornamenti e correzione bug",
+      "pl-PL": "Aktualizacje i poprawki błędów",
+      "de-DE": "Upgrades und Fehlerbehebung",
+      "cs-CZ": "Aktualizace a opravy chyb",
+      "nl-NL": "Upgrades en bugfixes",
+      "pt-PT": "Atualizações e correção de erros",
+      "ru-RU": "Обновления и исправление ошибок"
     }
   }
 }

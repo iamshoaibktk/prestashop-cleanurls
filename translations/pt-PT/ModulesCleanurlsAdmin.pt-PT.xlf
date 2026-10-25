@@ -434,9 +434,21 @@
         <source>WhatsApp</source>
         <target>WhatsApp</target>
       </trans-unit>
-      <trans-unit id="ce8ae9da5b7cd6c3df2929543a9af92d">
-        <source>Email</source>
-        <target>E-mail</target>
+      <trans-unit id="ffbf9ff02b1003b31d0306fa7670c352">
+        <source>Store design</source>
+        <target>Design de lojas</target>
+      </trans-unit>
+      <trans-unit id="9e9767281dac49f7dae5a42b57e08e08">
+        <source>Custom module development</source>
+        <target>Desenvolvimento de módulos à medida</target>
+      </trans-unit>
+      <trans-unit id="227f56a61b5e696248ed78e91360ae2b">
+        <source>Custom data migration (blogs, reviews, any platform)</source>
+        <target>Migração de dados à medida (blogs, avaliações, qualquer plataforma)</target>
+      </trans-unit>
+      <trans-unit id="fbfe78d513908fe2b009a431e7eae128">
+        <source>Upgrades and bug fixes</source>
+        <target>Atualizações e correção de erros</target>
       </trans-unit>
     </body>
   </file>
