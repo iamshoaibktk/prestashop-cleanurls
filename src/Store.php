@@ -72,9 +72,15 @@ class Store
      */
     public static function matchRedirect(int $idShop, string $path): ?array
     {
-        $rows = \Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'cleanurls_redirect`
-            WHERE id_shop = ' . $idShop . ' AND active = 1
-            ORDER BY FIELD(match_type, "exact", "prefix", "regex"), LENGTH(source) DESC') ?: [];
+        // Exact rules first, straight from the (id_shop, source) index: a shop can hold thousands of them.
+        $bare = rtrim($path, '/');
+        $exact = \Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'cleanurls_redirect`
+            WHERE id_shop = ' . $idShop . ' AND active = 1 AND match_type = "exact"
+            AND source IN ("' . pSQL($bare) . '", "' . pSQL($bare . '/') . '", "/' . pSQL($bare) . '", "/' . pSQL($bare . '/') . '")
+            ORDER BY id_redirect LIMIT 1') ?: [];
+        $rows = array_merge($exact, \Db::getInstance()->executeS('SELECT * FROM `' . _DB_PREFIX_ . 'cleanurls_redirect`
+            WHERE id_shop = ' . $idShop . ' AND active = 1 AND match_type IN ("prefix", "regex")
+            ORDER BY FIELD(match_type, "prefix", "regex"), LENGTH(source) DESC') ?: []);
         foreach ($rows as $r) {
             $source = ltrim($r['source'], '/');
             $target = $r['target'];

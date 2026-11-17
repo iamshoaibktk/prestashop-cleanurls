@@ -44,7 +44,7 @@ class Cleanurls extends Module
     {
         $this->name = 'cleanurls';
         $this->tab = 'seo';
-        $this->version = '1.0.2';
+        $this->version = '1.0.3';
         $this->author = 'iamshoaibktk@gmail.com';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '9.0.0', 'max' => _PS_VERSION_];
@@ -183,7 +183,63 @@ class Cleanurls extends Module
             }
         }
 
+        // Same URL shape, other page type? (products and CMS pages both on "{rewrite}.html"…)
+        if ($found = $this->findOtherType($type, $slug, $parent === null ? null : (string) $parent, $resolver)) {
+            [$otherType, $otherId] = $found;
+            $otherDef = Routes::TYPES[$otherType];
+            unset($_GET[$def['id']]);
+            $_GET[$otherDef['id']] = $otherId;
+            Dispatcher::getInstance()->setController($otherDef['controller']);
+
+            return;
+        }
+
         Dispatcher::getInstance()->setController('pagenotfound');
+    }
+
+    /**
+     * Looks the slug up in the other enabled page types. A match counts only when that object's own URL is
+     * the requested path (language prefix aside), so a product never answers for a CMS URL by accident.
+     *
+     * @return array{0: string, 1: int}|null
+     */
+    private function findOtherType(string $matchedType, string $slug, ?string $parent, Resolver $resolver): ?array
+    {
+        $want = $this->withoutLangPrefix($this->requestPath());
+        foreach (array_keys($this->activeRules()) as $type) {
+            if ($type === $matchedType) {
+                continue;
+            }
+            $keywords = Routes::TYPES[$type]['keywords'];
+            $id = $resolver->find($type, $slug, $keywords ? $parent : null);
+            if (!$id && $parent !== null && $type === 'category') {
+                // "{categories:/}{rewrite}/": the parent path may be part of what the other route took as the slug
+                $id = $resolver->find($type, $slug, null);
+            }
+            if (!$id) {
+                continue;
+            }
+            $url = (string) parse_url($this->objectUrl($type, $id), PHP_URL_PATH);
+            $base = (string) $this->context->shop->getBaseURI();
+            if ($base !== '' && str_starts_with($url, $base)) {
+                $url = substr($url, strlen($base));
+            }
+            if ($this->withoutLangPrefix(ltrim(rawurldecode($url), '/')) === $want) {
+                return [$type, (int) $id];
+            }
+        }
+
+        return null;
+    }
+
+    /** "es/aviso-legal.html" → "aviso-legal.html" when "es" is a language of the shop. */
+    private function withoutLangPrefix(string $path): string
+    {
+        if (preg_match('#^([a-z]{2})/(.*)$#', $path, $m) && Language::getIdByIso($m[1])) {
+            return $m[2];
+        }
+
+        return $path;
     }
 
     public function objectUrl(string $type, int $id, int $ipa = 0): string
