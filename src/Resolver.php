@@ -110,7 +110,7 @@ class Resolver
     {
         $parts = [];
         foreach ((new \Category($idCategory, $this->idLang, $this->idShop))->getParentsCategories($this->idLang) as $cat) {
-            if ((int) $cat['id_category'] !== $idCategory && !in_array((int) $cat['id_category'], \Link::$category_disable_rewrite, true)) {
+            if ((int) $cat['id_category'] !== $idCategory && !in_array((int) $cat['id_category'], [(int) \Configuration::get('PS_HOME_CATEGORY'), (int) \Configuration::get('PS_ROOT_CATEGORY')], true)) {
                 $parts[] = $cat['link_rewrite'];
             }
         }
