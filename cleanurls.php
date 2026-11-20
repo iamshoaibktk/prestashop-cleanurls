@@ -44,7 +44,7 @@ class Cleanurls extends Module
     {
         $this->name = 'cleanurls';
         $this->tab = 'seo';
-        $this->version = '1.0.3';
+        $this->version = '1.0.4';
         $this->author = 'iamshoaibktk@gmail.com';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '9.0.0', 'max' => _PS_VERSION_];
@@ -316,6 +316,20 @@ class Cleanurls extends Module
         $path = $this->requestPath();
         if (preg_match('/\.(?:jpe?g|png|gif|webp|avif|svg|ico|css|js|map|woff2?|ttf)$/i', $path)) {
             return;
+        }
+        // A category address typed or linked without its final slash: 301 to the real one (the old shop did this too)
+        if ($path !== '' && !str_ends_with($path, '/')) {
+            $p = $path;
+            if (preg_match('#^([a-z]{2})/(.+)$#', $p, $m) && Language::getIdByIso($m[1])) {
+                $p = $m[2];
+            }
+            $parts = explode('/', $p);
+            $slug = array_pop($parts);
+            $resolver = new Resolver((int) $this->context->language->id, (int) $this->context->shop->id);
+            $id = $resolver->find('category', $slug, $parts ? implode('/', $parts) : null);
+            if ($id && $resolver->exists('category', $id)) {
+                $this->redirect($this->objectUrl('category', $id), 301);
+            }
         }
         if (Configuration::get('CLEANURLS_LOG_404')) {
             Store::log404((int) $this->context->shop->id, $path, (string) ($_SERVER['HTTP_REFERER'] ?? ''));
